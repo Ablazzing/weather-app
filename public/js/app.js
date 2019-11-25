@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         if (location_input.value!==''){
             message1.textContent = 'loading...'
             message2.textContent = 'loading...'
-            fetch( 'http://localhost:3000/weather?address=' +location_input.value).then(data=>{
+            fetch( '/weather?address=' +location_input.value).then(data=>{
             console.log(data)    
             return data.json()}).then(data=>{
                 message1.textContent=data.location
