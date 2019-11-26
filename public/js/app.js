@@ -13,12 +13,13 @@ document.addEventListener('DOMContentLoaded',()=>{
         event.preventDefault()
         if (location_input.value!==''){
             message1.textContent = 'loading...'
-            message2.textContent = 'loading...'
+            message2.textContent = ''
             fetch( '/weather?address=' +location_input.value).then(data=>{
             console.log(data)    
             return data.json()}).then(data=>{
+                console.log(data.forecast)
                 message1.textContent=data.location
-                message2.textContent = data.forecast.summary
+                message2.textContent = data.forecast.summary + '. The high temperature is - ' + data.forecast.temperatureHigh
             }).catch(error=>{
                 message1.textContent='Address not found!'
                 message2.textContent = ''
